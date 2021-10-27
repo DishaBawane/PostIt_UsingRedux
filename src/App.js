@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Card from "./components/Card";
+import PostCard from "./components/PostCard";
+import { useDispatch } from "react-redux";
+
+import {fetchActions} from './store/actions/fetchActions';
+import React from "react";
+
+
+
+const App = () => {
+  const dispatch = useDispatch();
+  
+  React.useEffect(()=>{
+    dispatch(fetchActions());
+  },[dispatch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Card />
+      <PostCard/>
+
+    </>
   );
-}
+};
 
 export default App;
